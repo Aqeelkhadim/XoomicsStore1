@@ -1,26 +1,11 @@
-import PropTypes from "prop-types";
 import React from "react";
-import { changeLanguage } from "redux-multilanguage";
 
-const LanguageCurrencyChanger = ({
-  currency,
-  setCurrency,
-  currentLanguageCode,
-  dispatch
-}) => {
-  const changeLanguageTrigger = e => {
-    const languageCode = e.target.value;
-    dispatch(changeLanguage(languageCode));
-  };
 
-  const setCurrencyTrigger = e => {
-    const currencyName = e.target.value;
-    setCurrency(currencyName);
-  };
+const LanguageCurrencyChanger = () => {
 
   return (
     <div className="language-currency-wrap">
-      <div className="same-language-currency language-style">
+      {/*<div className="same-language-currency language-style">
         <span>
           {currentLanguageCode === "en"
             ? "English"
@@ -74,19 +59,14 @@ const LanguageCurrencyChanger = ({
             </li>
           </ul>
         </div>
-      </div>
-      <div className="same-language-currency">
+      </div>*/}
+      <div className="same-language-currency use-style">
         <p>Call Us 3965410</p>
       </div>
     </div>
   );
 };
 
-LanguageCurrencyChanger.propTypes = {
-  setCurrency: PropTypes.func,
-  currency: PropTypes.object,
-  currentLanguageCode: PropTypes.string,
-  dispatch: PropTypes.func
-};
+
 
 export default LanguageCurrencyChanger;
