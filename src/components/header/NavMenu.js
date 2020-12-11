@@ -16,7 +16,7 @@ const NavMenu = ({ strings, menuWhiteClass, sidebarMenu }) => {
         <ul>
           <li>
             <Link to={process.env.PUBLIC_URL + "/"}>
-              {strings["home"]}
+              Home
             </Link>
           </li>
           <li>
@@ -33,7 +33,7 @@ const NavMenu = ({ strings, menuWhiteClass, sidebarMenu }) => {
           </li>
           <li>
             <Link to={process.env.PUBLIC_URL + "/contact-us"}>
-              {strings["contact_us"]}
+              Contact us
             </Link>
           </li>
         </ul>

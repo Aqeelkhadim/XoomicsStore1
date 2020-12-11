@@ -8,7 +8,7 @@ const MobileNavMenu = ({ strings }) => {
     <nav className="offcanvas-navigation" id="offcanvas-navigation">
       <ul>
         <li className="menu-item-has-children">
-          <Link to={process.env.PUBLIC_URL + "/"}>{strings["home"]}</Link>
+          <Link to={process.env.PUBLIC_URL + "/"}>Home</Link>
         </li>
         <li>
           <Link to={process.env.PUBLIC_URL + "/products"}>
@@ -17,12 +17,12 @@ const MobileNavMenu = ({ strings }) => {
         </li>
         <li>
           <Link to={process.env.PUBLIC_URL + "/about-us"}>
-          About Us
+          About us
           </Link>
         </li>
         <li>
           <Link to={process.env.PUBLIC_URL + "/contact-us"}>
-            {strings["contact_us"]}
+           Contact us
           </Link>
         </li>
       </ul>

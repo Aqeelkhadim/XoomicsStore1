@@ -1,0 +1,13 @@
+.text-red{
+    color:red;
+}
+.text-green{
+    color: #0CC27E;
+}
+
+.text-error-danger{
+    width: 100%;
+    margin-top: 0.25rem;
+    font-size: 80%;
+    color: #FF586B
+}

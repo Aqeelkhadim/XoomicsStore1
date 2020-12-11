@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import MenuCart from "./sub-components/MenuCart";
 import { deleteFromCart } from "../../redux/actions/cartActions";
+import jwtDecode from "jwt-decode";
 
 const IconGroup = ({
   currency,
@@ -23,7 +24,13 @@ const IconGroup = ({
     );
     offcanvasMobileMenu.classList.add("active");
   };
-
+  const handleLogout =(e)=>{
+    e.preventDefault();
+    localStorage.removeItem("access_token");
+    window.location.href = "/login";
+  }
+  const token = localStorage.getItem("access_token");
+  const userdata = token? jwtDecode(token):'';
   return (
     <div
       className={`header-right-wrap ${iconWhiteClass ? iconWhiteClass : ""}`}
@@ -50,19 +57,32 @@ const IconGroup = ({
         </button>
         <div className="account-dropdown">
           <ul>
-            <li>
-              <Link to={process.env.PUBLIC_URL + "/login-register"}>Login</Link>
-            </li>
-            <li>
-              <Link to={process.env.PUBLIC_URL + "/login-register"}>
-                Register
-              </Link>
-            </li>
-            <li>
-              <Link to={process.env.PUBLIC_URL + "/my-account"}>
-                my account
-              </Link>
-            </li>
+
+            {!token ?
+               <>
+                 <li>
+                   <Link to={process.env.PUBLIC_URL + "/login"}>Login</Link>
+                 </li>
+                 <li>
+                   <Link to={process.env.PUBLIC_URL + "/register"}>
+                     Register
+                   </Link>
+                 </li>
+               </>
+              :
+              <>
+                <li>
+                  <Link to={process.env.PUBLIC_URL +`/profile/${userdata.name}`}>
+                    my account
+                  </Link>
+                </li>
+                <li>
+                  <a href="/login" className="nav-link mr-5" style={{ cursor: "pointer",textAlign: "center"  }} onClick={handleLogout}>
+                    Logout
+                  </a>
+                </li>
+              </>
+            }
           </ul>
         </div>
       </div>
