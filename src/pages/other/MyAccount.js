@@ -64,7 +64,6 @@ const MyAccount = ({location}) => {
 
         DashboardData();
     }, [token,userdata.id]);
-
     const handleLogout = async (e) => {
         e.preventDefault();
         localStorage.removeItem('access_token');
@@ -419,6 +418,7 @@ const MyAccount = ({location}) => {
                                                                                         errors.old_password &&
                                                                                         <p className="text-danger mt-1">{"Current password is " + errors.old_password}</p>
                                                                                         }
+                                                                                        {Error? <p className="text-danger mt-1">{Error}</p> :''}
                                                                                     </div>
                                                                                     <div
                                                                                         className="form-group col-md-12">

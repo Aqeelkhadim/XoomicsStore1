@@ -3,8 +3,9 @@ import React, { Fragment } from "react";
 import { Link } from "react-router-dom";
 import { useToasts } from "react-toast-notifications";
 import { getDiscountPrice } from "../../../helpers/product";
+import {IMAGE_URL} from "../../../globalConstant";
 
-const MenuCart = ({ cartData, currency, deleteFromCart }) => {
+const MenuCart = ({ cartData, deleteFromCart }) => {
   let cartTotalPrice = 0;
   const { addToast } = useToasts();
   return (
@@ -17,16 +18,10 @@ const MenuCart = ({ cartData, currency, deleteFromCart }) => {
                 single.price,
                 single.discount
               );
-              const finalProductPrice = (
-                single.price * currency.currencyRate
-              ).toFixed(2);
-              const finalDiscountedPrice = (
-                discountedPrice * currency.currencyRate
-              ).toFixed(2);
 
               discountedPrice != null
-                ? (cartTotalPrice += finalDiscountedPrice * single.quantity)
-                : (cartTotalPrice += finalProductPrice * single.quantity);
+                ? (cartTotalPrice += discountedPrice * single.quantity)
+                : (cartTotalPrice += single.price * single.quantity);
 
               return (
                 <li className="single-shopping-cart" key={key}>
@@ -34,7 +29,7 @@ const MenuCart = ({ cartData, currency, deleteFromCart }) => {
                     <Link to={process.env.PUBLIC_URL + "/product/" + single.id}>
                       <img
                         alt=""
-                        src={process.env.PUBLIC_URL + single.image[0]}
+                        src={process.env.PUBLIC_URL + IMAGE_URL +single.thumbnail}
                         className="img-fluid"
                       />
                     </Link>
@@ -51,8 +46,8 @@ const MenuCart = ({ cartData, currency, deleteFromCart }) => {
                     <h6>Qty: {single.quantity}</h6>
                     <span>
                       {discountedPrice !== null
-                        ? currency.currencySymbol + finalDiscountedPrice
-                        : currency.currencySymbol + finalProductPrice}
+                        ? discountedPrice
+                        : single.price}
                     </span>
                     {single.selectedProductColor &&
                     single.selectedProductSize ? (
@@ -77,7 +72,7 @@ const MenuCart = ({ cartData, currency, deleteFromCart }) => {
             <h4>
               Total :{" "}
               <span className="shop-total">
-                {currency.currencySymbol + cartTotalPrice.toFixed(2)}
+                {cartTotalPrice.toFixed(2)}
               </span>
             </h4>
           </div>
@@ -102,7 +97,6 @@ const MenuCart = ({ cartData, currency, deleteFromCart }) => {
 
 MenuCart.propTypes = {
   cartData: PropTypes.array,
-  currency: PropTypes.object,
   deleteFromCart: PropTypes.func
 };
 

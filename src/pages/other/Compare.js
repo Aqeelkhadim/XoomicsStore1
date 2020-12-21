@@ -11,6 +11,7 @@ import { getDiscountPrice } from "../../helpers/product";
 import LayoutOne from "../../layouts/LayoutOne";
 import Breadcrumb from "../../wrappers/breadcrumb/Breadcrumb";
 import Rating from "../../components/product/sub-components/ProductRating";
+import {IMAGE_URL} from "../../globalConstant";
 
 const Compare = ({
   location,
@@ -18,7 +19,6 @@ const Compare = ({
   compareItems,
   addToCart,
   deleteFromCompare,
-  currency
 }) => {
   const { pathname } = location;
   const { addToast } = useToasts();
@@ -76,8 +76,8 @@ const Compare = ({
                                     <img
                                       className="img-fluid"
                                       src={
-                                        process.env.PUBLIC_URL +
-                                        compareItem.image[0]
+                                        process.env.PUBLIC_URL +IMAGE_URL+
+                                        compareItem.thumbnail
                                       }
                                       alt=""
                                     />
@@ -94,24 +94,6 @@ const Compare = ({
                                     </Link>
                                   </div>
                                   <div className="compare-btn">
-                                    {compareItem.affiliateLink ? (
-                                      <a
-                                        href={compareItem.affiliateLink}
-                                        rel="noopener noreferrer"
-                                        target="_blank"
-                                      >
-                                        {" "}
-                                        Buy now{" "}
-                                      </a>
-                                    ) : compareItem.variation &&
-                                      compareItem.variation.length >= 1 ? (
-                                      <Link
-                                        to={`${process.env.PUBLIC_URL}/product/${compareItem.id}`}
-                                      >
-                                        Select Option
-                                      </Link>
-                                    ) : compareItem.stock &&
-                                      compareItem.stock > 0 ? (
                                       <button
                                         onClick={() =>
                                           addToCart(compareItem, addToast)
@@ -137,11 +119,6 @@ const Compare = ({
                                           ? "Added"
                                           : "Add to cart"}
                                       </button>
-                                    ) : (
-                                      <button disabled className="active">
-                                        Out of Stock
-                                      </button>
-                                    )}
                                   </div>
                                 </td>
                               );
@@ -154,29 +131,20 @@ const Compare = ({
                                 compareItem.price,
                                 compareItem.discount
                               );
-                              const finalProductPrice = (
-                                compareItem.price * currency.currencyRate
-                              ).toFixed(2);
-                              const finalDiscountedPrice = (
-                                discountedPrice * currency.currencyRate
-                              ).toFixed(2);
                               return (
                                 <td className="product-price" key={key}>
                                   {discountedPrice !== null ? (
                                     <Fragment>
                                       <span className="amount old">
-                                        {currency.currencySymbol +
-                                          finalProductPrice}
+                                        {compareItem.price}
                                       </span>
                                       <span className="amount">
-                                        {currency.currencySymbol +
-                                          finalDiscountedPrice}
+                                        {discountedPrice}
                                       </span>
                                     </Fragment>
                                   ) : (
                                     <span className="amount">
-                                      {currency.currencySymbol +
-                                        finalProductPrice}
+                                      {compareItem.price}
                                     </span>
                                   )}
                                 </td>
@@ -190,8 +158,8 @@ const Compare = ({
                               return (
                                 <td className="product-desc" key={key}>
                                   <p>
-                                    {compareItem.shortDescription
-                                      ? compareItem.shortDescription
+                                    {compareItem.detail
+                                      ? compareItem.detail
                                       : "N/A"}
                                   </p>
                                 </td>
@@ -224,7 +192,7 @@ const Compare = ({
                     </div>
                     <div className="item-empty-area__text">
                       No items found in compare <br />{" "}
-                      <Link to={process.env.PUBLIC_URL + "/shop-grid-standard"}>
+                      <Link to={process.env.PUBLIC_URL + "/products"}>
                         Add Items
                       </Link>
                     </div>

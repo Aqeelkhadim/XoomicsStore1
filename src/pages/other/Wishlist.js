@@ -14,11 +14,11 @@ import {
 import { addToCart } from "../../redux/actions/cartActions";
 import LayoutOne from "../../layouts/LayoutOne";
 import Breadcrumb from "../../wrappers/breadcrumb/Breadcrumb";
+import {IMAGE_URL} from "../../globalConstant";
 
 const Wishlist = ({
   location,
   cartItems,
-  currency,
   addToCart,
   wishlistItems,
   deleteFromWishlist,
@@ -69,12 +69,6 @@ const Wishlist = ({
                               wishlistItem.price,
                               wishlistItem.discount
                             );
-                            const finalProductPrice = (
-                              wishlistItem.price * currency.currencyRate
-                            ).toFixed(2);
-                            const finalDiscountedPrice = (
-                              discountedPrice * currency.currencyRate
-                            ).toFixed(2);
                             const cartItem = cartItems.filter(
                               item => item.id === wishlistItem.id
                             )[0];
@@ -91,8 +85,8 @@ const Wishlist = ({
                                     <img
                                       className="img-fluid"
                                       src={
-                                        process.env.PUBLIC_URL +
-                                        wishlistItem.image[0]
+                                        process.env.PUBLIC_URL +IMAGE_URL+
+                                        wishlistItem.thumbnail
                                       }
                                       alt=""
                                     />
@@ -115,41 +109,20 @@ const Wishlist = ({
                                   {discountedPrice !== null ? (
                                     <Fragment>
                                       <span className="amount old">
-                                        {currency.currencySymbol +
-                                          finalProductPrice}
+                                        {wishlistItem.price}
                                       </span>
                                       <span className="amount">
-                                        {currency.currencySymbol +
-                                          finalDiscountedPrice}
+                                        {discountedPrice}
                                       </span>
                                     </Fragment>
                                   ) : (
                                     <span className="amount">
-                                      {currency.currencySymbol +
-                                        finalProductPrice}
+                                      {wishlistItem.price}
                                     </span>
                                   )}
                                 </td>
 
                                 <td className="product-wishlist-cart">
-                                  {wishlistItem.affiliateLink ? (
-                                    <a
-                                      href={wishlistItem.affiliateLink}
-                                      rel="noopener noreferrer"
-                                      target="_blank"
-                                    >
-                                      {" "}
-                                      Buy now{" "}
-                                    </a>
-                                  ) : wishlistItem.variation &&
-                                    wishlistItem.variation.length >= 1 ? (
-                                    <Link
-                                      to={`${process.env.PUBLIC_URL}/product/${wishlistItem.id}`}
-                                    >
-                                      Select option
-                                    </Link>
-                                  ) : wishlistItem.stock &&
-                                    wishlistItem.stock > 0 ? (
                                     <button
                                       onClick={() =>
                                         addToCart(wishlistItem, addToast)
@@ -160,10 +133,7 @@ const Wishlist = ({
                                           ? "active"
                                           : ""
                                       }
-                                      disabled={
-                                        cartItem !== undefined &&
-                                        cartItem.quantity > 0
-                                      }
+
                                       title={
                                         wishlistItem !== undefined
                                           ? "Added to cart"
@@ -175,11 +145,6 @@ const Wishlist = ({
                                         ? "Added"
                                         : "Add to cart"}
                                     </button>
-                                  ) : (
-                                    <button disabled className="active">
-                                      Out of stock
-                                    </button>
-                                  )}
                                 </td>
 
                                 <td className="product-remove">
@@ -228,7 +193,7 @@ const Wishlist = ({
                     </div>
                     <div className="item-empty-area__text">
                       No items found in wishlist <br />{" "}
-                      <Link to={process.env.PUBLIC_URL + "/shop-grid-standard"}>
+                      <Link to={process.env.PUBLIC_URL + "/products"}>
                         Add Items
                       </Link>
                     </div>

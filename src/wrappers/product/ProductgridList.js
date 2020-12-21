@@ -8,7 +8,6 @@ import ProductGridListSingle from "../../components/product/ProductGridListSingl
 
 const ProductGrid = ({
   products,
-  currency,
   addToCart,
   addToWishlist,
   addToCompare,
@@ -26,7 +25,6 @@ const ProductGrid = ({
             sliderClassName={sliderClassName}
             spaceBottomClass={spaceBottomClass}
             product={product}
-            currency={currency}
             addToCart={addToCart}
             addToWishlist={addToWishlist}
             addToCompare={addToCompare}
@@ -57,7 +55,6 @@ ProductGrid.propTypes = {
   addToWishlist: PropTypes.func,
   cartItems: PropTypes.array,
   compareItems: PropTypes.array,
-  currency: PropTypes.object,
   products: PropTypes.array,
   sliderClassName: PropTypes.string,
   spaceBottomClass: PropTypes.string,
@@ -66,7 +63,6 @@ ProductGrid.propTypes = {
 
 const mapStateToProps = state => {
   return {
-    currency: state.currencyData,
     cartItems: state.cartData,
     wishlistItems: state.wishlistData,
     compareItems: state.compareData
@@ -79,16 +75,13 @@ const mapDispatchToProps = dispatch => {
       item,
       addToast,
       quantityCount,
-      selectedProductColor,
-      selectedProductSize
     ) => {
       dispatch(
         addToCart(
           item,
           addToast,
           quantityCount,
-          selectedProductColor,
-          selectedProductSize
+
         )
       );
     },

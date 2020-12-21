@@ -8,12 +8,11 @@ import { save, load } from "redux-localstorage-simple";
 import { Provider } from "react-redux";
 import { fetchProducts } from "./redux/actions/productActions";
 import rootReducer from "./redux/reducers/rootReducer";
-import products from "./data/products.json";
 import App from "./App";
 import "./assets/scss/style.scss";
 import * as serviceWorker from "./serviceWorker";
-
 import { composeWithDevTools } from "redux-devtools-extension";
+import homeProducts from "./redux/actions/HomeProductsAction";
 
 const store = createStore(
   rootReducer,
@@ -21,8 +20,9 @@ const store = createStore(
   composeWithDevTools(applyMiddleware(thunk, save()))
 );
 
-// fetch products from json file
-store.dispatch(fetchProducts(products));
+// fetch products from product API
+store.dispatch(fetchProducts());
+store.dispatch(homeProducts());
 
 ReactDOM.render(
   <Provider store={store}>

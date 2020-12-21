@@ -3,7 +3,7 @@ import MetaTags from "react-meta-tags";
 import LayoutSix from "../../layouts/LayoutSix";
 import TabProductSeven from "../../wrappers/product/TabProductSeven";
 // import Newsletter from "../../wrappers/newsletter/Newsletter";
-import BannerTen from "../../wrappers/banner/BannerTen";
+// import BannerTen from "../../wrappers/banner/BannerTen";
 import HeroSliderThirteen from "../../wrappers/hero-slider/HeroSliderThirteen";
 
 const HomeFashionFive = () => {
@@ -20,13 +20,12 @@ const HomeFashionFive = () => {
         {/* hero slider */}
         <HeroSliderThirteen />
         {/* banner */}
-        <BannerTen spaceTopClass="pt-10" spaceBottomClass="pb-85" />
+        {/*<BannerTen spaceTopClass="pt-10" spaceBottomClass="pb-85" />*/}
         {/* tab product */}
         <TabProductSeven
           spaceBottomClass="pb-100"
-          category="accessories"
           containerClass="container-fluid"
-          extraClass="hm4-section-padding"
+          extraClass="hm4-section-padding mt-5"
         />
         {/* newsletter */}
         {/*<Newsletter*/}

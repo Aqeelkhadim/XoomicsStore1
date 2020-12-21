@@ -118,7 +118,7 @@ const App = () => {
                                     path={process.env.PUBLIC_URL + "/compare"}
                                     component={Compare}
                                 />
-                                <Route
+                                <AuthRoute
                                     path={process.env.PUBLIC_URL + "/checkout"}
                                     component={Checkout}
                                 />

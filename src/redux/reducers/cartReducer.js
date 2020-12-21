@@ -39,6 +39,7 @@ const cartReducer = (state = initState, action) => {
       }
       // for variant products
     } else {
+
       const cartItem = cartItems.filter(
         item =>
           item.id === product.id &&

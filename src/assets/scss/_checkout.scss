@@ -103,6 +103,25 @@
   .different-address {
     display: none;
   }
+  .place-order > button {
+    background: none;
+    border: none;
+    background-color: $theme-color;
+    color: #fff;
+    display: block;
+    width: 100%;
+    font-weight: 500;
+    letter-spacing: 1px;
+    line-height: 1;
+    padding: 18px 20px;
+    text-align: center;
+    text-transform: uppercase;
+    border-radius: 50px;
+    z-index: 9;
+    &:hover {
+      background-color: #333;
+    }
+  }
 }
 
 .your-order-area {
