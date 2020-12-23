@@ -6,8 +6,8 @@ export const HOME_PRODUCTS = "HOME_PRODUCTS";
 
 const homeProducts = () => {
     return async function (dispatch) {
-        let one = `http://backend.xoomics.com/api/v1/outlet/${OUTLET_ID}/menu-items`;
-        let two = `http://backend.xoomics.com/api/v1/outlet/${OUTLET_ID}/special-products`;
+        let one = `http://demo-backend.xoomics.com/api/v1/outlet/${OUTLET_ID}/menu-items`;
+        let two = `http://demo-backend.xoomics.com/api/v1/outlet/${OUTLET_ID}/special-products`;
         const requestOne = axios.get(one);
         const requestTwo = axios.get(two);
 

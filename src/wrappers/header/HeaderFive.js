@@ -18,11 +18,11 @@ const HeaderFive = () => {
           <p>
             ©2020{" "}
             <a
-              href="//www.hasthemes.com"
+              href="#"
               target="_blank"
               rel="noopener noreferrer"
             >
-              Flone
+              Xoomishop
             </a>
             .All Rights Reserved.
           </p>

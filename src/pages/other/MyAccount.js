@@ -27,9 +27,9 @@ const MyAccount = ({location}) => {
     useEffect(() => {
         async function DashboardData() {
             if (token) {
-                let dashboardData = "http://backend.xoomics.com/api/v1/user/" + userdata.id + "/dashboard-data";
-                let orders = "http://backend.xoomics.com/api/v1/user/" + userdata.id + "/orders";
-                let address = "http://backend.xoomics.com/api/v1/get-addresses";
+                let dashboardData = "http://demo-backend.xoomics.com/api/v1/user/" + userdata.id + "/dashboard-data";
+                let orders = "http://demo-backend.xoomics.com/api/v1/user/" + userdata.id + "/orders";
+                let address = "http://demo-backend.xoomics.com/api/v1/get-addresses";
 
                 const requestOne = axios.get(dashboardData);
                 const requestTwo = axios.get(orders);
@@ -88,7 +88,7 @@ const MyAccount = ({location}) => {
             zip2: values.check ? values.zip1 : values.zip2,
         }
 
-        await axios.post("http://backend.xoomics.com/api/v1/update-addresses", data)
+        await axios.post("http://demo-backend.xoomics.com/api/v1/update-addresses", data)
             .then(response => {
                 swal({
                     title: "Address Updated Successfully!",
@@ -156,7 +156,7 @@ const MyAccount = ({location}) => {
     const resetSubmit = async (values, {setStatus, resetForm}) => {
         setResetState(true);
         axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
-        await axios.post("http://backend.xoomics.com/api/v1/reset-password", values)
+        await axios.post("http://demo-backend.xoomics.com/api/v1/reset-password", values)
             .then(response => {
                 swal({
                     title: "Reset Password Successfully!",

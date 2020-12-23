@@ -25,7 +25,7 @@ const Register = props => {
     const register_user = async (data,{setStatus, resetForm}) => {
         data['key']=KEY;
         setLoading(true);
-        await axios.post("http://backend.xoomics.com/api/auth/signup", data)
+        await axios.post("http://demo-backend.xoomics.com/api/auth/signup", data)
             .then(response => {
                 swal({
                     title: "Welcome "+response.data.name+"!",

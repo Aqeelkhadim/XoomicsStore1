@@ -119,7 +119,7 @@ const Contact = ({ location }) => {
                         })}
                         onSubmit={
                           async (values, { setStatus, resetForm }) => {
-                            await axios.post(`http://backend.xoomics.com/api/v1/outlet/8/contact-us`, values)
+                            await axios.post(`http://demo-backend.xoomics.com/api/v1/outlet/8/contact-us`, values)
                                 .then(response => {
                                   if (response.data) {
                                     swal({

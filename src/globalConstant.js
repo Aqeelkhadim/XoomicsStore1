@@ -1,3 +1,3 @@
-export const OUTLET_ID = "8";
-export const KEY = "BWg9reCaXtYW534F41KMR2yOrAlNxZ1tjT5njIPGkASPP32hLLVRz7R6IZf7";
-export const IMAGE_URL = 'http://backend.xoomics.com/storage/';
+export const OUTLET_ID = "1";
+export const KEY = "BWg9reCaXtYW534F41KMR2yOrAlNxZ1tjT5njIPGkASPP32AAA";
+export const IMAGE_URL = 'http://demo-backend.xoomics.com/storage/';
