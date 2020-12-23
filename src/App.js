@@ -28,7 +28,7 @@ const Contact = lazy(() => import("./pages/other/Contact"));
 const MyAccount = lazy(() => import("./pages/other/MyAccount"));
 const Login = lazy(() => import("./pages/other/Login"));
 const Register = lazy(() => import("./pages/other/Register"));
-const ForgotPassword = lazy(() => import("./pages/other/PasswordReset"));
+//const ForgotPassword = lazy(() => import("./pages/other/PasswordReset"));
 
 const Cart = lazy(() => import("./pages/other/Cart"));
 const Wishlist = lazy(() => import("./pages/other/Wishlist"));
@@ -101,10 +101,10 @@ const App = () => {
                                     path={process.env.PUBLIC_URL + "/register"}
                                     component={Register}
                                 />
-                                <GuestRoute
+                                {/* <GuestRoute
                                     path={process.env.PUBLIC_URL + "/forgot-password"}
                                     component={ForgotPassword}
-                                />
+                                /> */}
 
                                 <Route
                                     path={process.env.PUBLIC_URL + "/cart"}

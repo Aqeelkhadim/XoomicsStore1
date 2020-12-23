@@ -94,7 +94,7 @@ const Checkout = ({location, cartItems}) => {
                                                     type: "web"
                                                 }
                                                 axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
-                                                await axios.post(`http://backend.xoomics.com/api/v1/outlet/${OUTLET_ID}/cashier-orders`, requestData)
+                                                await axios.post(`http://demo-backend.xoomics.com/api/v1/outlet/${OUTLET_ID}/cashier-orders`, requestData)
                                                     .then(response => {
                                                         if (response) {
                                                             swal({

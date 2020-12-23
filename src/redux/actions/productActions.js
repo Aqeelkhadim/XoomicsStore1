@@ -11,7 +11,7 @@ const fetchProductsSuccess = products => ({
 // fetch products
 export const fetchProducts = products => {
   return async function (dispatch) {
-    await axios.get(`http://backend.xoomics.com/api/v1/outlet/${OUTLET_ID}/menu-items`)
+    await axios.get(`http://demo-backend.xoomics.com/api/v1/outlet/${OUTLET_ID}/menu-items`)
         .then(response => {
           dispatch(fetchProductsSuccess(response.data));
         });

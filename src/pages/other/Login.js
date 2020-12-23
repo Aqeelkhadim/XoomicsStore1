@@ -35,7 +35,7 @@ const Login = props => {
     const login_handle_form = async (data) => {
         data['key']=KEY;
         setLoading(true);
-        await axios.post("http://backend.xoomics.com/api/auth/login", data)
+        await axios.post("http://demo-backend.xoomics.com/api/auth/login", data)
             .then(response => {
                 console.log(response)
                 localStorage.setItem('access_token', (response.data.token));

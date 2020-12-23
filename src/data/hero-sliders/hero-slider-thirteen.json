@@ -1,24 +1,24 @@
 [
   {
     "id": 1,
-    "title": "Stylish",
-    "subtitle": "Male Clothes",
-    "text": "30% off Summer Vacation",
-    "image": "/assets/img/slider/single-slide-2.png",
+    "title": "Hot",
+    "subtitle": "Combo 1099",
+    "text": "FRI SAT SUN",
+    "image": "/assets/img/slider/single-slide-2.jpg",
     "url": "/shop-grid-standard",
     "shapeImage": "/assets/img/icon-img/slider-shape.png",
-    "shapeTitle": "Sale",
-    "shapeSubtitle": "$99.00"
+    "shapeTitle": "Offer",
+    "shapeSubtitle": "$5.00"
   },
   {
     "id": 2,
-    "title": "Stylish",
-    "subtitle": "Female Clothes",
-    "text": "20% off Summer Vacation",
-    "image": "/assets/img/slider/single-slide-7.png",
+    "title": "Hot",
+    "subtitle": "Combo 2000",
+    "text": "FRI SAT SUND",
+    "image": "/assets/img/slider/single-slide-7.jpg",
     "url": "/shop-grid-standard",
     "shapeImage": "/assets/img/icon-img/slider-shape.png",
-    "shapeTitle": "Sale",
-    "shapeSubtitle": "$20.00"
+    "shapeTitle": "Offer",
+    "shapeSubtitle": "$9.00"
   }
 ]
