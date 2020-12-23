@@ -11,7 +11,6 @@ const ShopCategories = ({categories, getSortParams}) => {
                     <ul>
                         <li>
                             <div className="sidebar-widget-list-left">
-                                ]
                                 <button
                                     onClick={e => {
                                         getSortParams("category", "");

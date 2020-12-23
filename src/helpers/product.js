@@ -62,8 +62,7 @@ export const getSortedProducts = (products, sortType, sortValue) => {
   if (products && sortType && sortValue) {
     if (sortType === "category") {
       return products.filter(
-        product => product.category.filter(single => single === sortValue)[0]
-      );
+        product => product.menu_type.name === sortValue);
     }
     if (sortType === "tag") {
       return products.filter(
@@ -108,26 +107,29 @@ export const getSortedProducts = (products, sortType, sortValue) => {
 
 // get individual element
 const getIndividualItemArray = array => {
-  let individualItemArray = array.filter(function(v, i, self) {
+  return array.filter(function (v, i, self) {
     return i === self.indexOf(v);
   });
-  return individualItemArray;
 };
+
+// Search Product
+export const searchProduct = (search,allProducts) =>{
+  let searchProduct = [];
+  allProducts.products && allProducts.products.map(product => {
+    return product.name.includes(search) ? searchProduct.push(product) : "";
+  });
+  console.log(searchProduct)
+  return searchProduct;
+}
 
 // get individual categories
 export const getIndividualCategories = products => {
   let productCategories = [];
   products &&
     products.map(product => {
-      return (
-        product.category &&
-        product.category.map(single => {
-          return productCategories.push(single);
-        })
-      );
+       return productCategories.push(product.menu_type.name);
     });
-  const individualProductCategories = getIndividualItemArray(productCategories);
-  return individualProductCategories;
+  return getIndividualItemArray(productCategories);
 };
 
 // get individual tags
@@ -142,8 +144,7 @@ export const getIndividualTags = products => {
         })
       );
     });
-  const individualProductTags = getIndividualItemArray(productTags);
-  return individualProductTags;
+  return getIndividualItemArray(productTags);
 };
 
 // get individual colors
@@ -158,8 +159,7 @@ export const getIndividualColors = products => {
         })
       );
     });
-  const individualProductColors = getIndividualItemArray(productColors);
-  return individualProductColors;
+  return getIndividualItemArray(productColors);
 };
 
 // get individual sizes
@@ -176,8 +176,7 @@ export const getProductsIndividualSizes = products => {
         })
       );
     });
-  const individualProductSizes = getIndividualItemArray(productSizes);
-  return individualProductSizes;
+  return getIndividualItemArray(productSizes);
 };
 
 // get product individual sizes
@@ -192,8 +191,7 @@ export const getIndividualSizes = product => {
         })
       );
     });
-  const individualSizes = getIndividualItemArray(productSizes);
-  return individualSizes;
+  return getIndividualItemArray(productSizes);
 };
 
 export const setActiveSort = e => {
