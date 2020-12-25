@@ -12,7 +12,7 @@ const MobileNavMenu = ({ strings }) => {
         </li>
         <li>
           <Link to={process.env.PUBLIC_URL + "/products"}>
-          Products
+          Menu
           </Link>
         </li>
         <li>

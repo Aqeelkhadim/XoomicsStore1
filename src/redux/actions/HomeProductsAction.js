@@ -6,21 +6,13 @@ export const HOME_PRODUCTS = "HOME_PRODUCTS";
 
 const homeProducts = () => {
     return async function (dispatch) {
-        let one = `http://demo-backend.xoomics.com/api/v1/outlet/${OUTLET_ID}/menu-items`;
-        let two = `http://demo-backend.xoomics.com/api/v1/outlet/${OUTLET_ID}/special-products`;
-        const requestOne = axios.get(one);
-        const requestTwo = axios.get(two);
-
-        axios.all([requestOne, requestTwo])
+        axios.get(`http://demo-backend.xoomics.com/api/v1/outlet/${OUTLET_ID}/special-products`)
             .then(
-                axios.spread((...responses) => {
-                    const responseOne = responses[0].data;
-                    const responseTwo = responses[1].data.special_offers_products;
-                    const responseThree = responses[1].data.most_sold_products;
-                    const allResponse= {'all': responseOne, 'sold': responseThree,'special': responseTwo}
-                    console.log(allResponse)
+                responses => {
+                    const responseTwo = responses.data.special_offers_products;
+                    const allResponse= {'special': responseTwo}
                     dispatch(setHomeProducts(allResponse));
-                })
+                }
             )
             .catch(errors => {
                 console.error(errors);
