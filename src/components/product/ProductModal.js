@@ -95,7 +95,6 @@ function ProductModal(props) {
                                             {" "}
                                             Add To Cart{" "}
                                         </button>
-
                                     </div>
                                     <div className="pro-details-wishlist">
                                         <button

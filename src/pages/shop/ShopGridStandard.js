@@ -110,5 +110,4 @@ const mapStateToProps = state => {
         products: state.productData.products
     }
 }
-
 export default connect(mapStateToProps)(ShopGridStandard);

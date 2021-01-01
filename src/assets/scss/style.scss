@@ -34,3 +34,12 @@
 @import "login-register";
 @import "my-account";
 @import "404";
+
+@media #{$xx-layout}{
+  .single-slider-img4 {
+    margin: 0 0px 0 0px;
+    .single-price-wrap {
+      right: 20px;
+    }
+  }
+}
