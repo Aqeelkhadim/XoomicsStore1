@@ -325,6 +325,36 @@
       }
     }
   }
+  .item-empty-area {
+    &__icon {
+      i {
+        font-size: 140px;
+        line-height: 1;
+        @media #{$xs-layout} {
+          font-size: 100px;
+        }
+      }
+    }
+
+    &__text {
+      font-size: 20px;
+      a {
+        margin-top: 30px;
+        font-weight: 500;
+        display: inline-block;
+        background-color: #363f4d;
+        color: $white;
+        font-size: 14px;
+        padding: 10px 30px;
+        transition: 0.3s;
+        &:hover {
+          background-color: $theme-color;
+          color: $white;
+        }
+      }
+    }
+  }
+
   .list {
     .product-wrap {
       display: none;

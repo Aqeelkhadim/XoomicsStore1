@@ -12,6 +12,7 @@ import ShopTopbar from '../../wrappers/product/ShopTopbar';
 import ShopProducts from '../../wrappers/product/ShopProducts';
 
 const ShopGridStandard = ({location, products}) => {
+
     const [layout, setLayout] = useState('grid three-column');
     const [sortType, setSortType] = useState('');
     const [sortValue, setSortValue] = useState('');
@@ -22,7 +23,7 @@ const ShopGridStandard = ({location, products}) => {
     const [currentData, setCurrentData] = useState([]);
     const [sortedProducts, setSortedProducts] = useState([]);
 
-    const pageLimit = 15;
+    const pageLimit = 12;
     const {pathname} = location;
 
     const getLayout = (layout) => {
@@ -44,14 +45,12 @@ const ShopGridStandard = ({location, products}) => {
         sortedProducts = getSortedProducts(sortedProducts, filterSortType, filterSortValue);
         setSortedProducts(sortedProducts);
         setCurrentData(sortedProducts.slice(offset, offset + pageLimit));
-    }, [offset, products, sortType, sortValue, filterSortType, filterSortValue ]);
-
-
+    }, [offset, products, sortType, sortValue, filterSortType, filterSortValue]);
     return (
         <Fragment>
             <MetaTags>
                 <title>Flone | Shop Page</title>
-                <meta name="description" content="Shop page of flone react minimalist eCommerce template." />
+                <meta name="description" content="Shop page of flone react minimalist eCommerce template."/>
             </MetaTags>
 
             <BreadcrumbsItem to={process.env.PUBLIC_URL + '/'}>Home</BreadcrumbsItem>
@@ -59,7 +58,7 @@ const ShopGridStandard = ({location, products}) => {
 
             <LayoutOne headerTop="visible">
                 {/* breadcrumb */}
-                <Breadcrumb />
+                <Breadcrumb/>
 
                 <div className="shop-area pt-95 pb-100">
                     <div className="container">
@@ -67,15 +66,19 @@ const ShopGridStandard = ({location, products}) => {
                             <div className="col-lg-3 order-2 order-lg-1">
 
                                 {/* shop sidebar */}
-                                <ShopSidebar products={products} getSortParams={getSortParams} sideSpaceClass="mr-30"/>
+                                <ShopSidebar products={products} getLayout={getLayout}
+                                             getFilterSortParams={getFilterSortParams} productCount={products.length}
+                                             getSortParams={getSortParams} sideSpaceClass="mr-30"/>
                             </div>
                             <div className="col-lg-9 order-1 order-lg-2">
-
                                 {/* shop topbar default */}
-                                <ShopTopbar getLayout={getLayout} getFilterSortParams={getFilterSortParams} productCount={products.length} sortedProductCount={currentData.length} />
+                                {currentData.length>0 ?
+                                <ShopTopbar getLayout={getLayout} getFilterSortParams={getFilterSortParams}
+                                            productCount={products.length} sortedProductCount={currentData.length}/>
+                                            :''}
 
                                 {/* shop page content default */}
-                                <ShopProducts layout={layout} products={currentData} />
+                                <ShopProducts layout={layout} products={currentData}/>
 
                                 {/* shop product pagination */}
                                 <div className="pro-pagination-style text-center mt-30">
@@ -101,12 +104,12 @@ const ShopGridStandard = ({location, products}) => {
 }
 
 ShopGridStandard.propTypes = {
-  location: PropTypes.object,
-  products: PropTypes.array
+    location: PropTypes.object,
+    products: PropTypes.array
 }
 
 const mapStateToProps = state => {
-    return{
+    return {
         products: state.productData.products
     }
 }
