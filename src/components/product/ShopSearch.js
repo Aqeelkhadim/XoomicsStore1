@@ -1,8 +1,7 @@
 import React, {useState} from "react";
-// import {searchProduct} from "../../helpers/product";
 import PropTypes from "prop-types";
 
-const ShopSearch = ({products,getSortParams}) => {
+const ShopSearch = ({getSortParams}) => {
     const [search, setSearch] = useState('');
     return (
         <div className="sidebar-widget">
@@ -43,8 +42,6 @@ const ShopSearch = ({products,getSortParams}) => {
 };
 ShopSearch.propTypes = {
     getSortParams: PropTypes.func,
-    products: PropTypes.array,
-    getFilterSortParams: PropTypes.func,
 };
 
 export default ShopSearch;

@@ -64,17 +64,14 @@ const ShopGridStandard = ({location, products}) => {
                     <div className="container">
                         <div className="row">
                             <div className="col-lg-3 order-2 order-lg-1">
-
                                 {/* shop sidebar */}
-                                <ShopSidebar products={products} getLayout={getLayout}
-                                             getFilterSortParams={getFilterSortParams} productCount={products.length}
-                                             getSortParams={getSortParams} sideSpaceClass="mr-30"/>
+                                <ShopSidebar products={products} getSortParams={getSortParams} sideSpaceClass="mr-30"/>
                             </div>
                             <div className="col-lg-9 order-1 order-lg-2">
                                 {/* shop topbar default */}
                                 {currentData.length>0 ?
                                 <ShopTopbar getLayout={getLayout} getFilterSortParams={getFilterSortParams}
-                                            productCount={products.length} sortedProductCount={currentData.length}/>
+                                            productCount={sortedProducts.length} sortedProductCount={currentData.length}/>
                                             :''}
 
                                 {/* shop page content default */}

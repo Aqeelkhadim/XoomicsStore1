@@ -6,7 +6,6 @@ import {addToWishlist} from "../../redux/actions/wishlistActions";
 import {addToCompare} from "../../redux/actions/compareActions";
 import ProductGridListSingle from "../../components/product/ProductGridListSingle";
 import {isEmptyArray} from "formik";
-import LayoutOne from "../../layouts/LayoutOne";
 
 const ProductGrid = ({
                          products,
