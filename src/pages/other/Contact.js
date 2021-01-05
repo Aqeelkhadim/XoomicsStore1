@@ -9,6 +9,7 @@ import { Formik, Field } from "formik";
 import * as axios from "axios";
 import swal from "sweetalert";
 import * as Yup from "yup";
+import {API_URL} from "../../globalConstant"
 const Contact = ({ location }) => {
   const { pathname } = location;
   return (
@@ -119,7 +120,7 @@ const Contact = ({ location }) => {
                         })}
                         onSubmit={
                           async (values, { setStatus, resetForm }) => {
-                            await axios.post(`http://demo-backend.xoomics.com/api/v1/outlet/8/contact-us`, values)
+                            await axios.post(`${API_URL}api/v1/outlet/8/contact-us`, values)
                                 .then(response => {
                                   if (response.data) {
                                     swal({

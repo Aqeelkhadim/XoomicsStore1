@@ -3,8 +3,6 @@ import React, {Suspense, lazy} from "react";
 import ScrollToTop from "./helpers/scroll-top";
 import {BrowserRouter as Router, Switch, Route} from "react-router-dom";
 import {ToastProvider} from "react-toast-notifications";
-// import { multilanguage, loadLanguages } from "redux-multilanguage";
-// import { connect } from "react-redux";
 import {BreadcrumbsProvider} from "react-breadcrumbs-dynamic";
 import AuthRoute from "./authcomponent/AuthRoute";
 import GuestRoute from "./authcomponent/GuestRoute";

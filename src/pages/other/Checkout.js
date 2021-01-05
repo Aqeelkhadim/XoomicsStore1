@@ -10,7 +10,7 @@ import Breadcrumb from "../../wrappers/breadcrumb/Breadcrumb";
 import {Field, Formik} from "formik";
 import * as Yup from "yup";
 import jwtDecode from "jwt-decode";
-import {OUTLET_ID} from "../../globalConstant";
+import {API_URL, OUTLET_ID} from "../../globalConstant";
 import * as axios from "axios";
 import swal from 'sweetalert';
 
@@ -94,7 +94,7 @@ const Checkout = ({location, cartItems}) => {
                                                     type: "web"
                                                 }
                                                 axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
-                                                await axios.post(`http://demo-backend.xoomics.com/api/v1/outlet/${OUTLET_ID}/cashier-orders`, requestData)
+                                                await axios.post(`${API_URL}api/v1/outlet/${OUTLET_ID}/cashier-orders`, requestData)
                                                     .then(response => {
                                                         if (response) {
                                                             swal({

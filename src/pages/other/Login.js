@@ -10,8 +10,7 @@ import {useForm} from "react-hook-form";
 import Error from "../../error/Error";
 import axios from "axios";
 import '../../error/error.css';
-import {KEY} from "../../globalConstant";
-
+import {API_URL, KEY} from "../../globalConstant";
 
 const Login = props => {
 
@@ -35,7 +34,7 @@ const Login = props => {
     const login_handle_form = async (data) => {
         data['key']=KEY;
         setLoading(true);
-        await axios.post("http://demo-backend.xoomics.com/api/auth/login", data)
+        await axios.post(`${API_URL}api/auth/login`, data)
             .then(response => {
                 console.log(response)
                 localStorage.setItem('access_token', (response.data.token));

@@ -9,7 +9,7 @@ import {Link} from "react-router-dom";
 import "../../error/error.css";
 import axios from "axios";
 import Error from "../../error/Error";
-import {KEY} from "../../globalConstant";
+import {API_URL,KEY} from "../../globalConstant";
 import swal from "sweetalert";
 
 const Register = props => {
@@ -25,7 +25,7 @@ const Register = props => {
     const register_user = async (data,{setStatus, resetForm}) => {
         data['key']=KEY;
         setLoading(true);
-        await axios.post("http://demo-backend.xoomics.com/api/auth/signup", data)
+        await axios.post(`${API_URL}api/auth/signup`, data)
             .then(response => {
                 swal({
                     title: "Welcome "+response.data.name+"!",
