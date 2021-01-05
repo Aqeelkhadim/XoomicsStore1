@@ -1,16 +1,17 @@
 import PropTypes from "prop-types";
-import React, {Fragment, useRef, useState} from "react";
+import React, {Fragment, useEffect, useRef, useState} from "react";
 import MetaTags from "react-meta-tags";
 import {BreadcrumbsItem} from "react-breadcrumbs-dynamic";
 import LayoutOne from "../../layouts/LayoutOne";
 import Breadcrumb from "../../wrappers/breadcrumb/Breadcrumb";
 import {useForm} from "react-hook-form";
-import {Link} from "react-router-dom";
+import {Link,useParams} from "react-router-dom";
 import "../../error/error.css";
 import axios from "axios";
 import Error from "../../error/Error";
 import {API_URL,KEY} from "../../globalConstant";
 import swal from "sweetalert";
+import Axios from "axios";
 
 const Register = props => {
     let {location} = props;
@@ -45,6 +46,26 @@ const Register = props => {
                 setLoading(false);
             });
     };
+    let { verify } = useParams();
+    useEffect(()=>{
+        if (verify){
+            Axios.get(`${API_URL}/api/v1/registration/token-verification/${verify}`)
+                .then((result) => {
+                    swal({
+                        title: "You are now verified!",
+                        text: "Your email successfully verified.",
+                        icon: "success",
+                    });
+                    setTimeout(() => {
+                        localStorage.setItem('access_token', (result.data.token));
+                        window.location.href = `/profile/${result.data.name}`;
+                    }, 2000);
+                })
+                .catch((error) => {
+                    setError("Invalid Token.");
+                });
+        }
+    })
     return (
         <Fragment>
             <MetaTags>

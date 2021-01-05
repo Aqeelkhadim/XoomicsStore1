@@ -96,7 +96,7 @@ const App = () => {
                                     component={Login}
                                 />
                                 <GuestRoute
-                                    path={process.env.PUBLIC_URL + "/register"}
+                                    path={process.env.PUBLIC_URL + "/register/:verify?"}
                                     component={Register}
                                 />
                                 {/* <GuestRoute
