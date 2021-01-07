@@ -3,7 +3,7 @@ import Logo from "../../components/header/Logo";
 import IconGroup from "../../components/header/IconGroup";
 import MobileMenu from "../../components/header/MobileMenu";
 import NavMenu from "../../components/header/NavMenu";
-
+import "../../../src/assets/css/styles.css";
 const HeaderFive = () => {
   return (
     <div>

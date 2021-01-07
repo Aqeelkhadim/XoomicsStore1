@@ -11,7 +11,7 @@ import { getDiscountPrice } from "../../helpers/product";
 import LayoutOne from "../../layouts/LayoutOne";
 import Breadcrumb from "../../wrappers/breadcrumb/Breadcrumb";
 import Rating from "../../components/product/sub-components/ProductRating";
-import {IMAGE_URL} from "../../globalConstant";
+import { IMAGE_URL } from "../../globalConstant";
 
 const Compare = ({
   location,
@@ -39,23 +39,23 @@ const Compare = ({
       <LayoutOne headerTop="visible">
         {/* breadcrumb */}
         <Breadcrumb />
-        <div className="compare-main-area pt-90 pb-100">
-          <div className="container">
+        <div className="compare-main-area pt-90 pb-100" >
+          <div className="container" >
             {compareItems && compareItems.length >= 1 ? (
               <div className="row">
-                <div className="col-lg-12">
-                  <div className="compare-page-content">
-                    <div className="compare-table table-responsive">
-                      <table className="table table-bordered mb-0">
-                        <tbody>
-                          <tr>
-                            <th className="title-column">Product Info</th>
+                <div className="col-lg-12" >
+                  <div className="compare-page-content" >
+                    <div className="compare-table table-responsive" >
+                      <table className="table table-bordered mb-0" >
+                        <tbody >
+                          <tr >
+                            <th className="title-column" style={{ minWidth: "220px", width: "220px", maxWidth: "220px" }}>Product Info</th>
                             {compareItems.map((compareItem, key) => {
                               const cartItem = cartItems.filter(
                                 item => item.id === compareItem.id
                               )[0];
                               return (
-                                <td className="product-image-title" key={key}>
+                                <td className="product-image-title" style={{ minWidth: "220px", width: "220px", maxWidth: "220px" }} key={key} >
                                   <div className="compare-remove">
                                     <button
                                       onClick={() =>
@@ -65,24 +65,32 @@ const Compare = ({
                                       <i className="pe-7s-trash" />
                                     </button>
                                   </div>
-                                  <Link
-                                    to={
-                                      process.env.PUBLIC_URL +
-                                      "/product/" +
-                                      compareItem.id
-                                    }
-                                    className="image"
-                                  >
-                                    <img
-                                      className="img-fluid"
-                                      src={
-                                        process.env.PUBLIC_URL +IMAGE_URL+
-                                        compareItem.thumbnail
+                                  <div >
+
+
+                                    <Link
+                                      to={
+                                        process.env.PUBLIC_URL +
+                                        "/product/" +
+                                        compareItem.id
                                       }
-                                      alt=""
-                                    />
-                                  </Link>
-                                  <div className="product-title">
+                                      className="image"
+
+                                    >
+                                      <div>
+                                        <img
+                                          className="img-fluid"
+                                          src={
+                                            process.env.PUBLIC_URL + IMAGE_URL +
+                                            compareItem.thumbnail
+                                          }
+                                          alt=""
+                                          style={{ objectFit: "cover", width: "220px", height: "150px" }}
+                                        />
+                                      </div>
+                                    </Link>
+                                  </div>
+                                  <div className="product-title" style={{ minHeight: "50px" }}>
                                     <Link
                                       to={
                                         process.env.PUBLIC_URL +
@@ -94,31 +102,31 @@ const Compare = ({
                                     </Link>
                                   </div>
                                   <div className="compare-btn">
-                                      <button
-                                        onClick={() =>
-                                          addToCart(compareItem, addToast)
-                                        }
-                                        className={
-                                          cartItem !== undefined &&
+                                    <button
+                                      onClick={() =>
+                                        addToCart(compareItem, addToast)
+                                      }
+                                      className={
+                                        cartItem !== undefined &&
                                           cartItem.quantity > 0
-                                            ? "active"
-                                            : ""
-                                        }
-                                        disabled={
-                                          cartItem !== undefined &&
-                                          cartItem.quantity > 0
-                                        }
-                                        title={
-                                          compareItem !== undefined
-                                            ? "Added to cart"
-                                            : "Add to cart"
-                                        }
-                                      >
-                                        {cartItem !== undefined &&
+                                          ? "active"
+                                          : ""
+                                      }
+                                      disabled={
+                                        cartItem !== undefined &&
                                         cartItem.quantity > 0
-                                          ? "Added"
-                                          : "Add to cart"}
-                                      </button>
+                                      }
+                                      title={
+                                        compareItem !== undefined
+                                          ? "Added to cart"
+                                          : "Add to cart"
+                                      }
+                                    >
+                                      {cartItem !== undefined &&
+                                        cartItem.quantity > 0
+                                        ? "Added"
+                                        : "Add to cart"}
+                                    </button>
                                   </div>
                                 </td>
                               );
@@ -143,10 +151,10 @@ const Compare = ({
                                       </span>
                                     </Fragment>
                                   ) : (
-                                    <span className="amount">
-                                      {compareItem.price}
-                                    </span>
-                                  )}
+                                      <span className="amount">
+                                        {compareItem.price}
+                                      </span>
+                                    )}
                                 </td>
                               );
                             })}
@@ -184,26 +192,26 @@ const Compare = ({
                 </div>
               </div>
             ) : (
-              <div className="row">
-                <div className="col-lg-12">
-                  <div className="item-empty-area text-center">
-                    <div className="item-empty-area__icon mb-30">
-                      <i className="pe-7s-shuffle"></i>
-                    </div>
-                    <div className="item-empty-area__text">
-                      No items found in compare <br />{" "}
-                      <Link to={process.env.PUBLIC_URL + "/products"}>
-                        Add Items
+                <div className="row">
+                  <div className="col-lg-12">
+                    <div className="item-empty-area text-center">
+                      <div className="item-empty-area__icon mb-30">
+                        <i className="pe-7s-shuffle"></i>
+                      </div>
+                      <div className="item-empty-area__text">
+                        No items found in compare <br />{" "}
+                        <Link to={process.env.PUBLIC_URL + "/products"}>
+                          Add Items
                       </Link>
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
-            )}
+              )}
           </div>
         </div>
       </LayoutOne>
-    </Fragment>
+    </Fragment >
   );
 };
 
